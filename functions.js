@@ -1,6 +1,6 @@
 
 //
-function geraCandleValorAleatorio() {
+function geraValorAleatorio() {
    let valorAleatorio = 0;
    valorAleatorio = (Math.random() * 208) + 1;
    console.log(valorAleatorio);
