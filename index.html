@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<script src="functions"> </script
+<script src="functions.js">
+
+   let precoRandomico = 0;
+</script>
+
 <head>
    <meta charset="UTF-8">
    <title>Gráfico de Candles OHLC</title>
@@ -21,15 +25,19 @@
 </head>
 
 <body>
-   document.write("OI")
+   document.write("OI");
+
    <svg id="grafico" width="800" height="400"></svg>
 
    <script>
+
+      precoRandomico = geraCandleValorAleatorio();
       // Exemplo de dados OHLC
+      // Achei o minimo e máximo do range do gráfico
       const dados = [
-         { open: 30, high: 40, low: 25, close: 35 },
-         { open: 35, high: 45, low: 30, close: 32 },
-         { open: 32, high: 38, low: 28, close: 36 },
+         { open: 25.1, high: 40, low: 25, close: 35 },
+         { open: precoRandomico, high: 45, low: 30, close: 32 },
+         { open: 32, high: 38, low: 28, close: 45.9 },
          { open: 36, high: 42, low: 33, close: 31 },
          { open: 31, high: 37, low: 29, close: 34 },
          { open: 35, high: 45, low: 30, close: 32 },
