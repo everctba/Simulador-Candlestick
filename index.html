@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+   <meta charset="UTF-8">
+   <title>Gráfico de Candles OHLC</title>
+   <style>
+      body {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100vh;
+         background: #f4f4f4;
+      }
+
+      svg {
+         border: 1px solid #333;
+         background: white;
+      }
+   </style>
+</head>
+
+<body>
+   document.write("OI")
+   <svg id="grafico" width="800" height="400"></svg>
+
+   <script>
+      // Exemplo de dados OHLC
+      const dados = [
+         { open: 30, high: 40, low: 25, close: 35 },
+         { open: 35, high: 45, low: 30, close: 32 },
+         { open: 32, high: 38, low: 28, close: 36 },
+         { open: 36, high: 42, low: 33, close: 31 },
+         { open: 31, high: 37, low: 29, close: 34 },
+         { open: 35, high: 45, low: 30, close: 32 },
+         { open: 32, high: 38, low: 28, close: 36 },
+         { open: 36, high: 42, low: 33, close: 31 },
+         { open: 31, high: 37, low: 29, close: 34 },
+         { open: 34, high: 44, low: 32, close: 38 }
+      ];
+
+      const svg = document.getElementById("grafico");
+      const largura = svg.clientWidth;
+      const altura = svg.clientHeight;
+      const espacamento = largura / (dados.length + 22);
+
+      // Escala simples (ajusta valores ao tamanho do gráfico)
+      const max = Math.max(...dados.map(d => d.high));
+      const min = Math.min(...dados.map(d => d.low));
+      const escalaY = valor => altura - ((valor - min) / (max - min)) * (altura - 20);
+
+      dados.forEach((candle, i) => {
+         const x = (i + 1) * espacamento;
+
+         const yHigh = escalaY(candle.high);
+         const yLow = escalaY(candle.low);
+         const yOpen = escalaY(candle.open);
+         const yClose = escalaY(candle.close);
+
+         const cor = candle.close > candle.open ? "green" : "red";
+
+         // Linha vertical (high → low)
+         const linha = document.createElementNS("http://www.w3.org/2000/svg", "line");
+         linha.setAttribute("x1", x);
+         linha.setAttribute("y1", yHigh);
+         linha.setAttribute("x2", x);
+         linha.setAttribute("y2", yLow);
+         linha.setAttribute("stroke", "black");
+         svg.appendChild(linha);
+
+         // Retângulo (open → close)
+         const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+         rect.setAttribute("x", x - 10);
+         rect.setAttribute("y", Math.min(yOpen, yClose));
+         rect.setAttribute("width", 20);
+         rect.setAttribute("height", Math.abs(yClose - yOpen));
+         rect.setAttribute("fill", cor);
+         svg.appendChild(rect);
+      });
+   </script>
+</body>
+
+</html>
