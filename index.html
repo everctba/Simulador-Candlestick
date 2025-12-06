@@ -73,37 +73,16 @@
       printaArrayCandle(candles);
       // Exemplo de dados OHLC
       // Achei o minimo e máximo do range do gráfico
-      const dados = [
-         { open: 25.1, high: 40, low: 25, close: 35 },
-         { open: precoRandomico, high: 45, low: 30, close: 32 },
-         { open: 32, high: 38, low: 28, close: 45.9 },
-         { open: 36, high: 42, low: 33, close: 31 },
-         { open: 31, high: 37, low: 29, close: 34 },
-         { open: 35, high: 45, low: 30, close: 32 },
-         { open: 32, high: 38, low: 28, close: 36 },
-         { open: 36, high: 42, low: 33, close: 31 },
-         { open: 31, high: 37, low: 29, close: 34 },
-         { open: 34, high: 44, low: 32, close: 38 },
-         { open: 36, high: 42, low: 33, close: 31 },
-         { open: 31, high: 37, low: 29, close: 34 },
-         { open: 35, high: 45, low: 30, close: 32 },
-         { open: 32, high: 38, low: 28, close: 36 },
-         { open: 36, high: 42, low: 33, close: 31 },
-         { open: 31, high: 37, low: 29, close: 34 },
-         { open: 34, high: 44, low: 32, close: 38 },
-         { open: 36, high: 42, low: 33, close: 31 },
-         { open: 31, high: 37, low: 29, close: 34 },
-         { open: 35, high: 45, low: 30, close: 32 },
-         { open: 32, high: 38, low: 28, close: 36 },
-         { open: 36, high: 42, low: 33, close: 31 },
-         { open: 31, high: 37, low: 29, close: 34 },
-         { open: 36, high: 42, low: 33, close: 31 },
-         { open: 31, high: 37, low: 29, close: 34 },
-         { open: 35, high: 45, low: 30, close: 32 },
-         { open: 32, high: 38, low: 28, close: 36 },
-         { open: 36, high: 42, low: 33, close: 51 },
-         { open: 11, high: 37, low: 29, close: 34 }
-      ];
+      const dados = [];
+
+      for (let i = 0; i < 29; i++) {
+         dados.push({
+            open: candles[i][0],   // valor de exemplo variando
+            high: candles[i][1],     // valor de exemplo variando
+            low: candles[i][2],      // valor de exemplo variando
+            close: candles[i][3]     // valor de exemplo variando
+         });
+      }
 
       const svg = document.getElementById("grafico");
       const largura = svg.clientWidth;
