@@ -14,9 +14,55 @@ function defineLadoDoViesInicial(vies) {
    return vies;
 }
 
+function atualizaVies(viesAtual) {
+   console.log(" ENTROU NOA TUALIZA VIES vies!!");
+   if (vies === "compra") {
+      vies = atualizaViesCompra(vies);
+      console.log("Vies recebido do atualiza vies de COMPRA vies = " + vies);
+   } else {
+      vies = atualizaViesVenda(vies);
+      console.log("Vies recebido do atualiza vies de VENDA vies = " + vies);
+   }
+
+}
+
+function atualizaViesCompra(viesAtual) {
+   console.log("Ta no vies de COMPRA e é viesAtual!! ... " + viesAtual);
+   let valorAleatorio = 0;
+   valorAleatorio = Math.random().toFixed(2);
+
+   if (valorAleatorio <= 0.7) {
+      viesAtual = "compra";
+   } else {
+      viesAtual = "venda";
+   }
+   //console.log("Valor do vies de compra Atualizado com 70% de chance = " + viesAtual);
+
+   return viesAtual;
+}
+
+function atualizaViesVenda(viesAtual) {
+   console.log("Tá no vies de VENDA e é viesAtual!! ... " + viesAtual);
+   let valorAleatorio = 0;
+   valorAleatorio = Math.random().toFixed(2);
+
+   if (valorAleatorio <= 0.7) {
+      viesAtual = "venda";
+   } else {
+      viesAtual = "compra";
+   }
+   //console.log("Valor do vies de compra Atualizado com 70% de chance = " + viesAtual);
+
+   return viesAtual;
+}
 //
 function geraValorAleatorio() {
    let valorAleatorio = 0;
+
+
+
+
+
    valorAleatorio = (Math.random() * 208) + 1;
    //console.log(valorAleatorio);
    preco = (valorAleatorio / 10) + 25;
@@ -38,6 +84,10 @@ function geraCandleAleatorio(tamanho, matriz) {
          //console.log(matriz[i][j]);
          //abertura, fechamento, minima, maxima,
       }
+
+      atualizaVies(vies);
+      console.log("atualizando viez a cada [i] " + i);
+
    }
    console.log("Linhas:", matriz.length);
    console.log("Colunas:", matriz[0].length);
