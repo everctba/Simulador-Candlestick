@@ -1,12 +1,27 @@
 
+
+function defineLadoDoViesInicial(vies) {
+   let valorAleatorio = 0;
+   valorAleatorio = Math.random().toFixed(2);
+   console.log("valorAleatorio = " + valorAleatorio);
+   console.log(" TIPO valorAleatorio = " + typeof Number(valorAleatorio));
+
+   if (valorAleatorio >= 0.5) {
+      vies = "compra";
+   } else {
+      vies = "venda";
+   }
+   return vies;
+}
+
 //
 function geraValorAleatorio() {
    let valorAleatorio = 0;
    valorAleatorio = (Math.random() * 208) + 1;
-   console.log(valorAleatorio);
+   //console.log(valorAleatorio);
    preco = (valorAleatorio / 10) + 25;
    preco = preco.toFixed(1);
-   console.log(preco);
+   //console.log(preco);
 
 
 
@@ -20,7 +35,7 @@ function geraCandleAleatorio(tamanho, matriz) {
       matriz[i] = [];
       for (j = 0; j < 4; j++) {
          matriz[i][j] = geraValorAleatorio();
-         console.log(matriz[i][j]);
+         //console.log(matriz[i][j]);
          //abertura, fechamento, minima, maxima,
       }
    }
