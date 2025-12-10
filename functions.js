@@ -175,6 +175,8 @@ function geraCandleAleatorio(tamanho, matriz) {
       //console.log(" cents = " + cents);
       let contador4 = 0;
       let contador5 = 0;
+      let contador6 = 0;
+      let contador7 = 0;
       while (tamanhoCandle > 1.3 && contador4 < 200) {
          contador4++;
          console.log(" ENTROU o tamanho candle é mairo que 3.3 ");
@@ -191,6 +193,27 @@ function geraCandleAleatorio(tamanho, matriz) {
          tamanhoPavio = Math.abs(matriz[i][2] - matriz[i][3]);
          console.log(" BBBBBBBBBB abertura menos fechamento VENDA =  " + tamanhoCandle);
       }
+      while ((matriz[i][2] > matriz[i][0]) && (matriz[i][2] > matriz[i][1]) && (contador6 < 200)) {
+
+         contador6++;
+         //console.log(" ENTROU o tamanho candle é mairo que 3.3 ");
+
+         matriz[i][2] = pequenoValorAleatorio();
+
+         console.log(" ATUALIZADA PAVIUUUUUUUUUUUUUUUUU matriz[i][3] =  " + matriz[i][2]);
+
+      }
+      while ((matriz[i][3] < matriz[i][0]) && (matriz[i][3] > matriz[i][1]) && (contador7 < 200)) {
+
+         contador7++;
+         //console.log(" ENTROU o tamanho candle é mairo que 3.3 ");
+         //aletaoriio = pequenoValorAleatorio();
+         matriz[i][3] = pequenoValorAleatorio();
+
+
+
+      }
+
 
 
 
