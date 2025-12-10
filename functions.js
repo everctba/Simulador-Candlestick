@@ -31,7 +31,7 @@ function atualizaViesCompra(viesAtual) {
    let valorAleatorio = 0;
    valorAleatorio = Math.random().toFixed(2);
 
-   if (valorAleatorio <= 0.7) {
+   if (valorAleatorio <= 0.3) {
       viesAtual = "compra";
    } else {
       viesAtual = "venda";
@@ -46,7 +46,7 @@ function atualizaViesVenda(viesAtual) {
    let valorAleatorio = 0;
    valorAleatorio = Math.random().toFixed(2);
 
-   if (valorAleatorio <= 0.7) {
+   if (valorAleatorio <= 0.3) {
       viesAtual = "venda";
    } else {
       viesAtual = "compra";
@@ -56,20 +56,15 @@ function atualizaViesVenda(viesAtual) {
    return viesAtual;
 }
 //
+
 function geraValorAleatorio() {
    let valorAleatorio = 0;
-
-
-
-
 
    valorAleatorio = (Math.random() * 208) + 1;
    //console.log(valorAleatorio);
    preco = (valorAleatorio / 10) + 25;
    preco = preco.toFixed(1);
    //console.log(preco);
-
-
 
    return preco;
 }
@@ -80,10 +75,137 @@ function geraCandleAleatorio(tamanho, matriz) {
    for (i = 0; i < tamanho; i++) {
       matriz[i] = [];
       for (j = 0; j < 4; j++) {
-         matriz[i][j] = geraValorAleatorio();
-         //console.log(matriz[i][j]);
-         //abertura, fechamento, minima, maxima,
+         if (i > 0 && j == 0) {
+            matriz[i][0] = matriz[i - 1][1];
+         } else {
+            matriz[i][j] = geraValorAleatorio();
+         }
+
       }
+      console.log(" Vies dentro do [i] " + vies);
+      if ((vies == "compra") && (i > 0)) {
+
+         tamanhoCandle = matriz[i][0] - matriz[i][1];
+         //define abertura em relação ao fechamento anterior sem o GAP
+         // if (i > 0) {
+         //    matriz[i][0] = matriz[i - 1][0];
+         // }
+
+         while ((matriz[i][0] > matriz[i][1])
+            && (tamanhoCandle > 3.3)
+            && (matriz[i][2] > matriz[i][0])
+            && (matriz[i][3] < matriz[i][1])) {
+            // matriz[i][1] = geraValorAleatorio();
+            console.log(`Posição i = ${i}  `);
+            console.log(`tamanhoCandle = ${tamanhoCandle}  `);
+            console.log(`while fechamento menor que abertura  FECHAMENTO = ${matriz[i][1]}  e ABERUTRA = ${matriz[i][0]} `);
+            matriz[i][1] = geraValorAleatorio();
+            console.log("while Novo valor de fechamento " + matriz[i][1]);
+            tamanhoCandle = matriz[i][0] - matriz[i][1];
+            matriz[i][2] = geraValorAleatorio();
+            matriz[i][3] = geraValorAleatorio();
+         }
+
+         // while (matriz[i][2] > matriz[i][0]) {
+         //    matriz[i][2] = geraValorAleatorio();
+         // }
+         // while (matriz[i][3] < matriz[i][1]) {
+         //    matriz[i][3] = geraValorAleatorio();
+         // }
+
+
+         // console.log(" abertura menos fechamento COMPRA =  " + tamanhoCandle);
+         // console.log(" abertura    matriz[i][0] =  " + matriz[i][0]);
+         // console.log(" fechamento  matriz[i][1] =  " + matriz[i][1]);
+         // cents = (tamanhoCandle % 5) / 4;
+         // console.log(" cents = " + cents);
+         // matriz[i][1] = matriz[i][1] - tamanhoCandle;
+
+
+
+         // tamanhoCandle = Math.abs(matriz[i][0] - matriz[i][1]);
+         // console.log(" AAAAAAAAAA abertura menos fechamento COMPRA =  " + tamanhoCandle);
+         // //console.log(" abertura    matriz[i][0] =  " + matriz[i][0]);
+         // console.log(" fechamento  matriz[i][0] =  " + matriz[i][0]);
+         // cents = (tamanhoCandle % 5) / 4;
+         // //console.log(" cents = " + cents);
+         // if (tamanhoCandle > 3.3) {
+         //    console.log(" ENTROU o tamanho candle é mairo que 3.3 ");
+         //    matriz[i][1] = Math.abs(matriz[i][1] - (tamanhoCandle / 0.5));
+         //    console.log(" ATUALIZADA  BBBBBB matriz[i][1] =  " + matriz[i][1]);
+         //    tamanhoCandle = Math.abs(matriz[i][0] - matriz[i][1]);
+         //    console.log(" BBBBBBBBBB abertura menos fechamento VENDA =  " + tamanhoCandle);
+         // }
+
+
+
+      } else if (vies == "venda") {
+
+         tamanhoCandle = Math.abs(matriz[i][0] - matriz[i][1]);
+         //define abertura em relação ao fechamento anterior sem o GAP
+         // if (i > 0) {
+         //    matriz[i][0] = matriz[i - 1][0];
+         // }
+
+         while ((matriz[i][0] < matriz[i][1])
+            && (tamanhoCandle > 3.3)
+            && (matriz[i][2] > matriz[i][0])
+            && (matriz[i][3] < matriz[i][1])) {
+            matriz[i][1] = geraValorAleatorio();
+            console.log("while Novo valor de fechamento em vies de venda " + matriz[i][1]);
+            tamanhoCandle = matriz[i][0] - matriz[i][1];
+            matriz[i][0] = geraValorAleatorio();
+            matriz[i][2] = geraValorAleatorio();
+         }
+
+
+         // if (i > 0) {
+
+         //    // if (matriz[i - 1][0] - matriz[i - 1][1] < 0) {
+         //    //    matriz[i][1] = matriz[i - 1][1];
+         //    // }
+         //    matriz[i][1] = matriz[i - 1][1];
+         // }
+
+         while (matriz[i][0] < matriz[i][1]) {
+            matriz[i][0] = geraValorAleatorio();
+            console.log("while Novo valor de Abertura" + matriz[i][1]);
+         }
+         while (matriz[i][2] > matriz[i][1]) {
+            matriz[i][2] = geraValorAleatorio();
+
+         }
+         // while (matriz[i][3] < matriz[i][0]) {
+         //    matriz[i][3] = geraValorAleatorio();
+         // }
+
+
+
+
+         // tamanhoCandle = Math.abs(matriz[i][0] - matriz[i][1]);
+         // console.log(" AAAAAAAAAA abertura menos fechamento VENDA =  " + tamanhoCandle);
+         // //console.log(" abertura    matriz[i][0] =  " + matriz[i][0]);
+         // console.log(" fechamento  matriz[i][1] =  " + matriz[i][1]);
+         // cents = (tamanhoCandle % 5) / 4;
+         // //console.log(" cents = " + cents);
+         // if (tamanhoCandle > 3.3) {
+         //    console.log(" ENTROU o tamanho candle é mairo que 3.3 ");
+         //    matriz[i][1] = Math.abs(matriz[i][1] - (tamanhoCandle / 0.5));
+         //    console.log(" ATUALIZADA  BBBBBB matriz[i][1] =  " + matriz[i][1]);
+         //    tamanhoCandle = Math.abs(matriz[i][0] - matriz[i][1]);
+         //    console.log(" BBBBBBBBBB abertura menos fechamento VENDA =  " + tamanhoCandle);
+         // }
+
+
+
+
+
+         //    0           1         2       3
+         // abertura, fechamento, minima, maxima,
+      }
+      //console.log(matriz[i][j]);
+      //abertura, fechamento, minima, maxima,
+
 
       atualizaVies(vies);
       console.log("atualizando viez a cada [i] " + i);
