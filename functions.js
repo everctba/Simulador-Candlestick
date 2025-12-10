@@ -259,3 +259,51 @@ function printaArrayCandle(listaCandles) {
 
    }
 }
+
+
+function calculoPorcentagemDoDia(matriz) {
+   tamanhoPorcentagemDia = Math.abs(matriz[0][0] - matriz[28][1]).toFixed(2);
+   percentual = ((tamanhoPorcentagemDia / matriz[0][0]) * 100).toFixed(2);
+
+   document.write(`<br> Porcentagens do ocilação do dia = ${percentual}%<br>`);
+
+
+
+}
+
+
+
+function printaMinimaDoDia(matriz, tamanho) {
+   let i, minimaDoDia = matriz[0][2];
+
+   for (i = 0; i < tamanho; i++) {
+      if (matriz[i][2] < minimaDoDia) {
+         minimaDoDia = matriz[i][2];
+         //document.write("Minima dia atualizada = " + minimaDoDia + "<br> ");
+      }
+   }
+   document.write("Minima do dia foi = " + minimaDoDia + "<br> ");
+}
+
+function printaMaximaDoDia(matriz, tamanho) {
+   let i, maximaDoDia = matriz[0][3];
+
+   for (i = 0; i < tamanho; i++) {
+      if (matriz[i][3] > maximaDoDia) {
+         maximaDoDia = matriz[i][3];
+         //document.write("Minima dia atualizada = " + minimaDoDia + "<br> ");
+      }
+   }
+   document.write("Máxima do dia foi = " + maximaDoDia + "<br> ");
+}
+
+function printaMediaDoPreco(matriz, tamanho) {
+   let i, media = 0;
+   for (i = 0; i < tamanho; i++) {
+      media += Number(matriz[i][1]);
+      //document.write("Média = " + media + "<br> ");
+   }
+   media = (media / tamanho).toFixed(2);
+   document.write("Média sobre preço de fechamento sobre os 29 candles = " + media + "<br> ");
+
+}

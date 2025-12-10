@@ -67,7 +67,7 @@
       // abertura, fechamento, minima, maxima,
 
       var vies = "nonono";
-      console.log("vies = " + vies);
+
 
       vies = defineLadoDoViesInicial(vies);
       console.log("vies atualizado = " + vies);
@@ -77,6 +77,11 @@
       candles = geraCandleAleatorio(tamanho, candles);
 
       printaArrayCandle(candles);
+
+      calculoPorcentagemDoDia(candles);
+      printaMaximaDoDia(candles, tamanho);
+      printaMinimaDoDia(candles, tamanho);
+      printaMediaDoPreco(candles, tamanho);
       // Exemplo de dados OHLC
       // Achei o minimo e máximo do range do gráfico
       const dados = [];
