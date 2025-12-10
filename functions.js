@@ -370,3 +370,115 @@ function printaMediaDoPreco(matriz, tamanho) {
    document.write("Média sobre preço de fechamento sobre os 29 candles = " + media + "<br> ");
 
 }
+
+
+function carregaVolatilidadePorCandle(candles, tamanho) {
+   let i, j, matrizVol = [];
+   for (i = 0; i < tamanho; i++) {
+      matrizVol[i] = [];
+
+      matrizVol[i][0] = candles[i][2];
+      matrizVol[i][1] = candles[i][3];
+
+      // document.write(`Matriz de maxima minima = Minima" ${i} ${matrizVol[i][0]} <br> `);
+      // document.write("Matriz de maxima minima = Maxima" + matrizVol[i][1] + "<br> ");
+   }
+   return matrizVol;
+
+}
+
+function printaVolatilidadePorCandle(matriz, tamanho) {
+   let i, vol;
+   let volMedia = 0;
+   let frequencia0 = 0;
+   let frequencia1 = 0;
+   let frequencia2 = 0;
+   let frequencia3 = 0;
+   let frequencia4 = 0;
+   let frequencia5 = 0;
+   let frequencia6 = 0;
+   let frequencia7 = 0;
+   let frequencia8 = 0;
+   let frequencia9 = 0;
+   let frequencia10 = 0;
+
+   document.write(`<br>  Volatilidade por candle <br>`);
+   for (i = 0; i < tamanho; i++) {
+      vol = Math.abs(matriz[i][0] - matriz[i][1]).toFixed(2);
+      document.write(`Volatilidade do candle ${i} = R$ ${vol} <br> `);
+
+      //guarda a vol media
+      volMedia += Number(vol);
+
+      switch (true) {
+         case vol > 10:
+            frequencia10++;
+            break;
+         case vol > 9:
+            frequencia9++;
+            break;
+         case vol > 4:
+            frequencia8++;
+            break;
+         case vol > 3.5:
+            frequencia7++;
+            break;
+         case vol > 3:
+            frequencia6++;
+            break;
+         case vol > 2.5:
+            frequencia5++;
+            break;
+         case vol > 2:
+            frequencia4++;
+            break;
+         case vol > 1.5:
+            frequencia3++;
+            break;
+         case vol > 1:
+            frequencia2++;
+            break;
+         case vol > 0.5:
+            frequencia1++;
+            break;
+         case vol <= 0.5:
+            frequencia0++;
+            break;
+
+      }
+   }
+
+   document.write(`<br> Frequência de volatilidade por candle <br>`);
+   document.write(` Frequência 0.0 a 0.5 = ${frequencia0} <br>`);
+   document.write(` Frequência 0.5 a 1.0 = ${frequencia1} <br>`);
+   document.write(` Frequência 1.0 a 1.5 = ${frequencia2} <br>`);
+   document.write(` Frequência 1.5 a 2.0 = ${frequencia3} <br>`);
+   document.write(` Frequência 2.0 a 2.5 = ${frequencia4} <br>`);
+   document.write(` Frequência 2.5 a 3.0 = ${frequencia5} <br>`);
+   document.write(` Frequência 3.0 a 3.5 = ${frequencia6} <br>`);
+   document.write(` Frequência 3.5 a 4.0 = ${frequencia7} <br>`);
+   // document.write(` Frequência 8 a 9 = ${frequencia8} <br>`);
+   // document.write(` Frequência 9 a 10 = ${frequencia9} <br>`);
+   // document.write(` Frequência acima de 10 = ${frequencia10} <br>`);
+
+   //Atualiza o valor da media da volatilidade
+   document.write(` <br>`);
+   volMedia = (volMedia / tamanho).toFixed(2);
+   document.write(`Media de volatilidade de ocilação de preço por candle = R$ ${volMedia}<br>`);
+
+}
+
+// function frequenciaDeVolatilidade(matriz, tamanho) {
+//    let i;
+
+
+
+//    for (i = 0; i < tamanho; i++) {
+//       matriz[i] =
+
+
+
+
+// }
+
+// }

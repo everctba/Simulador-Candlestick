@@ -57,85 +57,99 @@
             Mínima DIA <br>
          </div>
       </div>
+
+      <script>
+
+         //let precoRandomico = 0;
+         let tamanho = 29;
+         let candles = [];
+         let matrizVolatilidade = []
+         // abertura, fechamento, minima, maxima,
+         //tamanho = prompt("Qual a quantidade de candles que você deseja gerar? Exemplo: 29");
+         var vies = "nonono";
+
+         vies = defineLadoDoViesInicial(vies);
+         console.log("vies atualizado = " + vies);
+         tiker = prompt("Qual Ticker você deseja simular? Exemplo: AAPL, MSFT, TSLA");
+         //document.write("<h2>Simulação de gráfico para o Ticker: " + tiker + " </h2>");
+
+         //precoRandomico = geraValorAleatorio();
+         candles = geraCandleAleatorio(tamanho, candles);
+
+         printaArrayCandle(candles);
+
+         calculoPorcentagemDoDia(candles);
+         printaMaximaDoDia(candles, tamanho);
+         printaMinimaDoDia(candles, tamanho);
+         printaMediaDoPreco(candles, tamanho);
+
+         matrizVolatilidade = carregaVolatilidadePorCandle(candles, tamanho);
+         printaVolatilidadePorCandle(matrizVolatilidade, tamanho);
+         // Exemplo de dados OHLC
+         // Achei o minimo e máximo do range do gráfico
+         const dados = [];
+
+         for (let i = 0; i < 29; i++) {
+            dados.push({
+               open: candles[i][0],   // valor de exemplo variando
+               high: candles[i][1],     // valor de exemplo variando
+               low: candles[i][2],      // valor de exemplo variando
+               close: candles[i][3]     // valor de exemplo variando
+            });
+         }
+
+
+
+
+         // =============================================================
+         // Criação do gráfico de candles
+         // Seleciona o SVG e define dimensões
+
+         const svg = document.getElementById("grafico");
+         const largura = svg.clientWidth;
+         const altura = svg.clientHeight;
+         const espacamento = largura / (dados.length + 1);
+
+         // Escala simples (ajusta valores ao tamanho do gráfico)
+         const max = Math.max(...dados.map(d => d.high));
+         const min = Math.min(...dados.map(d => d.low));
+         const escalaY = valor => altura - ((valor - min) / (max - min)) * (altura - 20);
+
+         dados.forEach((candle, i) => {
+            const x = (i + 1) * espacamento;
+
+            const yOpen = escalaY(candle.open);
+            const yHigh = escalaY(candle.high);
+            const yLow = escalaY(candle.low);
+            const yClose = escalaY(candle.close);
+
+
+            const cor = candle.close > candle.open ? "green" : "red";
+
+            // Linha vertical (high → low)
+            const linha = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            linha.setAttribute("x1", x);
+            linha.setAttribute("y1", yHigh);
+            linha.setAttribute("x2", x);
+            linha.setAttribute("y2", yLow);
+            linha.setAttribute("stroke", "black");
+            svg.appendChild(linha);
+
+            // Retângulo (open → close)
+            const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            rect.setAttribute("x", x - 10);
+            rect.setAttribute("y", Math.min(yOpen, yClose));
+            rect.setAttribute("width", 20);
+            rect.setAttribute("height", Math.abs(yClose - yOpen));
+            rect.setAttribute("fill", cor);
+            svg.appendChild(rect);
+         });
+      </script>
+
+
    </div>
 
-   <script>
 
-      //let precoRandomico = 0;
-      let tamanho = 29;
-      let candles = [];
-
-      // abertura, fechamento, minima, maxima,
-      //tamanho = prompt("Qual a quantidade de candles que você deseja gerar? Exemplo: 29");
-      var vies = "nonono";
-
-      vies = defineLadoDoViesInicial(vies);
-      console.log("vies atualizado = " + vies);
-      tiker = prompt("Qual Ticker você deseja simular? Exemplo: AAPL, MSFT, TSLA");
-      //document.write("<h2>Simulação de gráfico para o Ticker: " + tiker + " </h2>");
-
-      //precoRandomico = geraValorAleatorio();
-      candles = geraCandleAleatorio(tamanho, candles);
-
-      printaArrayCandle(candles);
-
-      calculoPorcentagemDoDia(candles);
-      printaMaximaDoDia(candles, tamanho);
-      printaMinimaDoDia(candles, tamanho);
-      printaMediaDoPreco(candles, tamanho);
-      // Exemplo de dados OHLC
-      // Achei o minimo e máximo do range do gráfico
-      const dados = [];
-
-      for (let i = 0; i < 29; i++) {
-         dados.push({
-            open: candles[i][0],   // valor de exemplo variando
-            high: candles[i][1],     // valor de exemplo variando
-            low: candles[i][2],      // valor de exemplo variando
-            close: candles[i][3]     // valor de exemplo variando
-         });
-      }
-
-      const svg = document.getElementById("grafico");
-      const largura = svg.clientWidth;
-      const altura = svg.clientHeight;
-      const espacamento = largura / (dados.length + 1);
-
-      // Escala simples (ajusta valores ao tamanho do gráfico)
-      const max = Math.max(...dados.map(d => d.high));
-      const min = Math.min(...dados.map(d => d.low));
-      const escalaY = valor => altura - ((valor - min) / (max - min)) * (altura - 20);
-
-      dados.forEach((candle, i) => {
-         const x = (i + 1) * espacamento;
-
-         const yOpen = escalaY(candle.open);
-         const yHigh = escalaY(candle.high);
-         const yLow = escalaY(candle.low);
-         const yClose = escalaY(candle.close);
-
-
-         const cor = candle.close > candle.open ? "green" : "red";
-
-         // Linha vertical (high → low)
-         const linha = document.createElementNS("http://www.w3.org/2000/svg", "line");
-         linha.setAttribute("x1", x);
-         linha.setAttribute("y1", yHigh);
-         linha.setAttribute("x2", x);
-         linha.setAttribute("y2", yLow);
-         linha.setAttribute("stroke", "black");
-         svg.appendChild(linha);
-
-         // Retângulo (open → close)
-         const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-         rect.setAttribute("x", x - 10);
-         rect.setAttribute("y", Math.min(yOpen, yClose));
-         rect.setAttribute("width", 20);
-         rect.setAttribute("height", Math.abs(yClose - yOpen));
-         rect.setAttribute("fill", cor);
-         svg.appendChild(rect);
-      });
-   </script>
 </body>
 
 </html>
