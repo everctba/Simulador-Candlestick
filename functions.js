@@ -56,6 +56,16 @@ function atualizaViesVenda(viesAtual) {
    return viesAtual;
 }
 //
+function pequenoValorAleatorio() {
+   let valorAleatorio = 0;
+   valorAleatorio = (Math.random() * 3);
+   valorAleatorio += 0.5;
+   valorAleatorio += 25;
+   Number(valorAleatorio.toFixed(2));
+   //console.log(" valor pequeno aleatorio = " + valorAleatorio);
+
+   return valorAleatorio.toFixed(2);
+}
 
 function geraValorAleatorio() {
    let valorAleatorio = 0;
@@ -66,7 +76,8 @@ function geraValorAleatorio() {
    preco = preco.toFixed(1);
    //console.log(preco);
    if ((preco < 26.1) && (preco > 40)) {
-      geraValorAleatorio()
+
+      geraValorAleatorio();
    } else {
       return preco;
    }
@@ -81,9 +92,19 @@ function geraCandleAleatorio(tamanho, matriz) {
          if (i > 0 && j == 0) {
             matriz[i][0] = matriz[i - 1][1];
          } else {
-            matriz[i][j] = geraValorAleatorio();
-         }
+            //matriz[i][j] = geraValorAleatorio();
+            valor = pequenoValorAleatorio();
+            // console.log("VALOR ===== [j] " + valor);
 
+            matriz[i][j] = valor;
+
+            // if (vies == "compra") {
+            //    matriz[i][j] = valor;
+            // } else if (vies == "venda") {
+            //    matriz[i][j] = valor;
+            //    //console.log("VIES DENTRO DO [j] " + vies);
+            // }
+         }
       }
       //garante que a minima seja menor
       while (matriz[i][2] > matriz[i][0] && matriz[i][2] > matriz[i][1]) {
