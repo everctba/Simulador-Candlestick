@@ -75,13 +75,14 @@ function geraValorAleatorio() {
    preco = (valorAleatorio / 10) + 26;
    preco = preco.toFixed(1);
    //console.log(preco);
-   contador3 = 0;
-   if ((preco < 26.1) && (preco > 40) && (contador3 < 100)) {
+   let contador3 = 0;
+   while ((preco < 26.1) && (preco > 40) && (contador3 < 100)) {
       contador3++;
       preco = pequenoValorAleatorio();
-   } else {
-      return preco;
    }
+
+   return preco;
+
 }
 
 function geraCandleAleatorio(tamanho, matriz) {
@@ -107,8 +108,8 @@ function geraCandleAleatorio(tamanho, matriz) {
             // }
          }
       }
-      contador1 = 0;
-      contador2 = 0;
+      let contador1 = 0;
+      let contador2 = 0;
       //garante que a minima seja menor
       while (matriz[i][2] > matriz[i][0] && matriz[i][2] > matriz[i][1] && contador1 < 100) {
          matriz[i][2] = pequenoValorAleatorio();
@@ -165,19 +166,32 @@ function geraCandleAleatorio(tamanho, matriz) {
 
 
 
-      //    // tamanhoCandle = Math.abs(matriz[i][0] - matriz[i][1]);
-      //    // console.log(" AAAAAAAAAA abertura menos fechamento COMPRA =  " + tamanhoCandle);
-      //    // //console.log(" abertura    matriz[i][0] =  " + matriz[i][0]);
-      //    // console.log(" fechamento  matriz[i][0] =  " + matriz[i][0]);
-      //    // cents = (tamanhoCandle % 5) / 4;
-      //    // //console.log(" cents = " + cents);
-      //    // if (tamanhoCandle > 3.3) {
-      //    //    console.log(" ENTROU o tamanho candle é mairo que 3.3 ");
-      //    //    matriz[i][1] = Math.abs(matriz[i][1] - (tamanhoCandle / 0.5));
-      //    //    console.log(" ATUALIZADA  BBBBBB matriz[i][1] =  " + matriz[i][1]);
-      //    //    tamanhoCandle = Math.abs(matriz[i][0] - matriz[i][1]);
-      //    //    console.log(" BBBBBBBBBB abertura menos fechamento VENDA =  " + tamanhoCandle);
-      //    // }
+      tamanhoCandle = Math.abs(matriz[i][0] - matriz[i][1]);
+      tamanhoPavio = Math.abs(matriz[i][2] - matriz[i][3]);
+      console.log(" AAAAAAAAAA abertura menos fechamento COMPRA =  " + tamanhoCandle);
+      //console.log(" abertura    matriz[i][0] =  " + matriz[i][0]);
+      console.log(" fechamento  matriz[i][0] =  " + matriz[i][0]);
+      // cents = (tamanhoCandle % 5) / 4;
+      //console.log(" cents = " + cents);
+      let contador4 = 0;
+      let contador5 = 0;
+      while (tamanhoCandle > 1.3 && contador4 < 200) {
+         contador4++;
+         console.log(" ENTROU o tamanho candle é mairo que 3.3 ");
+         matriz[i][1] = pequenoValorAleatorio();
+         console.log(" ATUALIZADA  BBBBBB matriz[i][1] =  " + matriz[i][1]);
+         tamanhoCandle = Math.abs(matriz[i][0] - matriz[i][1]);
+         console.log(" BBBBBBBBBB abertura menos fechamento VENDA =  " + tamanhoCandle);
+      }
+      while ((tamanhoPavio > 1.3) && (contador5 < 200)) {
+         contador5++;
+         console.log(" ENTROU o tamanho candle é mairo que 3.3 ");
+         matriz[i][2] = pequenoValorAleatorio();
+         console.log(" ATUALIZADA PAVIUUUUUUUUUUUUUUUUU matriz[i][1] =  " + matriz[i][2]);
+         tamanhoPavio = Math.abs(matriz[i][2] - matriz[i][3]);
+         console.log(" BBBBBBBBBB abertura menos fechamento VENDA =  " + tamanhoCandle);
+      }
+
 
 
 
