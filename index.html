@@ -64,14 +64,15 @@
       //let precoRandomico = 0;
       let tamanho = 29;
       let candles = [];
+
       // abertura, fechamento, minima, maxima,
-
+      //tamanho = prompt("Qual a quantidade de candles que você deseja gerar? Exemplo: 29");
       var vies = "nonono";
-
 
       vies = defineLadoDoViesInicial(vies);
       console.log("vies atualizado = " + vies);
-
+      tiker = prompt("Qual Ticker você deseja simular? Exemplo: AAPL, MSFT, TSLA");
+      //document.write("<h2>Simulação de gráfico para o Ticker: " + tiker + " </h2>");
 
       //precoRandomico = geraValorAleatorio();
       candles = geraCandleAleatorio(tamanho, candles);

@@ -75,9 +75,10 @@ function geraValorAleatorio() {
    preco = (valorAleatorio / 10) + 26;
    preco = preco.toFixed(1);
    //console.log(preco);
-   if ((preco < 26.1) && (preco > 40)) {
-
-      geraValorAleatorio();
+   contador3 = 0;
+   if ((preco < 26.1) && (preco > 40) && (contador3 < 100)) {
+      contador3++;
+      preco = pequenoValorAleatorio();
    } else {
       return preco;
    }
@@ -106,13 +107,17 @@ function geraCandleAleatorio(tamanho, matriz) {
             // }
          }
       }
+      contador1 = 0;
+      contador2 = 0;
       //garante que a minima seja menor
-      while (matriz[i][2] > matriz[i][0] && matriz[i][2] > matriz[i][1]) {
-         matriz[i][2] = geraValorAleatorio();
+      while (matriz[i][2] > matriz[i][0] && matriz[i][2] > matriz[i][1] && contador1 < 100) {
+         matriz[i][2] = pequenoValorAleatorio();
          console.log("atualizando viez a cada [i] " + i);
+         contador1++;
       }
-      while (matriz[i][3] < matriz[i][0] && matriz[i][3] < matriz[i][1]) {
-         matriz[i][3] = geraValorAleatorio();
+      while (matriz[i][3] < matriz[i][0] && matriz[i][3] < matriz[i][1] && contador2 < 100) {
+         contador2++;
+         matriz[i][3] = pequenoValorAleatorio();
          console.log("atualizando viez a cada [i] " + i);
 
       }
