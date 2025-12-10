@@ -103,10 +103,11 @@
       dados.forEach((candle, i) => {
          const x = (i + 1) * espacamento;
 
+         const yOpen = escalaY(candle.open);
          const yHigh = escalaY(candle.high);
          const yLow = escalaY(candle.low);
-         const yOpen = escalaY(candle.open);
          const yClose = escalaY(candle.close);
+
 
          const cor = candle.close > candle.open ? "green" : "red";
 

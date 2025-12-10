@@ -239,8 +239,19 @@ function printaArrayCandle(listaCandles) {
    let i, j;
 
    for (i = 0; i < listaCandles.length; i++) {
+      document.write(`Candle ${i}:  `);
       for (j = 0; j < 4; j++) {
+         if (j == 0) {
+            document.write(" Abertura: ");
+         } else if (j == 1) {
+            document.write(" Fechamento: ");
+         } else if (j == 2) {
+            document.write(" Minima: ");
+         } else if (j == 3) {
+            document.write(" Maxima: ");
+         }
          document.write(listaCandles[i][j] + " ");
+
 
 
       }
