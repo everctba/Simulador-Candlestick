@@ -29,10 +29,15 @@
 
 <body>
 
+
    <div class="container">
+      <script>tiker = prompt("Qual Ticker você deseja simular? Exemplo: AAPL, MSFT, TSLA");
+         document.write("<h2>Simulação de gráfico para o Ticker: " + tiker + " </h2>");
+      </script>
       <div class="topo"> Gerador de pseudo gráfico de ação de bolsa de valores
          <a href="">
             <button class="button-recarregar" type="button">Gerar novo Gráfico!</button>
+
          </a>
       </div>
 
@@ -69,10 +74,8 @@
          var vies = "nonono";
 
          vies = defineLadoDoViesInicial(vies);
-         console.log("vies atualizado = " + vies);
-         tiker = prompt("Qual Ticker você deseja simular? Exemplo: AAPL, MSFT, TSLA");
-         //document.write("<h2>Simulação de gráfico para o Ticker: " + tiker + " </h2>");
 
+        
          //precoRandomico = geraValorAleatorio();
          candles = geraCandleAleatorio(tamanho, candles);
 
@@ -97,6 +100,9 @@
                close: candles[i][1]     // valor de exemplo variando
             });
          }
+
+
+
 
          // =============================================================
          // Criação do gráfico de candles
