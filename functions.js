@@ -108,8 +108,23 @@ function geraCandleAleatorio(tamanho, matriz) {
       }
       let contador1 = 0;
       let contador2 = 0;
+      let direcao = matriz[i][0] - matriz[i][1];
+      console.log(" Direção do candle  " + direcao);
+      if (direcao < 0) {
+         console.log(" Entro candle direcao COMPRA " + direcao);
+         matriz[i][3] = matriz[i][1];
+
+      } else {
+         console.log(" Entro candle direcao VENDA " + direcao);
+         matriz[i][2] = matriz[i][0];
+
+      }
+
+      contador1 = 0;
+
+      contador2 = 0;
       //garante que a minima seja menor
-      while (matriz[i][2] > matriz[i][0] && matriz[i][2] > matriz[i][1] && contador1 < 100) {
+      while (matriz[i][2] > matriz[i][0] && matriz[i][2] < matriz[i][1] && contador1 < 100) {
          matriz[i][2] = pequenoValorAleatorio();
 
          contador1++;
@@ -322,10 +337,24 @@ function printaArrayCandle(listaCandles) {
 
 
 function calculoPorcentagemDoDia(matriz) {
-   tamanhoPorcentagemDia = Math.abs(matriz[0][0] - matriz[28][1]).toFixed(2);
+   let variacaolabel = "";
+   let variacao = matriz[0][0] - matriz[28][1];
+   console.log(" variacao   " + variacao);
+
+   if (variacao >= 0) {
+      variacaolabel = "+";
+   }
+   else {
+      variacaolabel = "";
+
+   }
+
+
+
+   tamanhoPorcentagemDia = (matriz[0][0] - matriz[28][1]).toFixed(2);
    percentual = ((tamanhoPorcentagemDia / matriz[0][0]) * 100).toFixed(2);
 
-   document.write(`<br> Porcentagens do ocilação do dia = ${percentual}%<br>`);
+   document.write(`<br> Porcentagens do ocilação do dia = ${variacaolabel}${percentual}%<br>`);
 
 
 
