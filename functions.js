@@ -98,11 +98,11 @@ function geraCandleAleatorio(tamanho, matriz) {
 
             matriz[i][j] = valor;
 
-            while ((j == 3) && (matriz[i][3] < matriz[i][0]) && (matriz[i][3] < matriz[i][1])) {
-               console.log("ENTROU no while da maxima menor que abertura e fechamento ");
-               valor = pequenoValorAleatorio();
-               matriz[i][j] = valor;
-            }
+            // while ((j == 3) && (matriz[i][3] < matriz[i][0]) && (matriz[i][3] < matriz[i][1])) {
+            //    console.log("ENTROU no while da maxima menor que abertura e fechamento ");
+            //    valor = pequenoValorAleatorio();
+            //    matriz[i][j] = valor;
+            // }
 
          }
       }
