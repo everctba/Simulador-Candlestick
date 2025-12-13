@@ -169,42 +169,42 @@ function geraCandleAleatorio(tamanho, matriz) {
       let contador5 = 0;
       let contador6 = 0;
       let contador7 = 0;
-      while (tamanhoCandle > 1.3 && contador4 < 200) {
-         contador4++;
+      // while (tamanhoCandle > 1.3 && contador4 < 200) {
+      //    contador4++;
 
-         matriz[i][1] = pequenoValorAleatorio();
+      //    matriz[i][1] = pequenoValorAleatorio();
 
-         tamanhoCandle = Math.abs(matriz[i][0] - matriz[i][1]);
+      //    tamanhoCandle = Math.abs(matriz[i][0] - matriz[i][1]);
 
-      }
-      while ((tamanhoPavio > 1.3) && (contador5 < 200)) {
-         contador5++;
+      // }
+      // while ((tamanhoPavio > 1.3) && (contador5 < 200)) {
+      //    contador5++;
 
-         matriz[i][2] = pequenoValorAleatorio();
+      //    matriz[i][2] = pequenoValorAleatorio();
 
-         tamanhoPavio = Math.abs(matriz[i][2] - matriz[i][3]);
+      //    tamanhoPavio = Math.abs(matriz[i][2] - matriz[i][3]);
 
-      }
-      while ((matriz[i][2] > matriz[i][0]) && (matriz[i][2] > matriz[i][1]) && (contador6 < 200)) {
+      // }
+      // while ((matriz[i][2] > matriz[i][0]) && (matriz[i][2] > matriz[i][1]) && (contador6 < 200)) {
 
-         contador6++;
-         //console.log(" ENTROU o tamanho candle é mairo que 3.3 ");
+      //    contador6++;
+      //    //console.log(" ENTROU o tamanho candle é mairo que 3.3 ");
 
-         matriz[i][2] = pequenoValorAleatorio();
-
-
-
-      }
-      while ((matriz[i][3] < matriz[i][0]) && (matriz[i][3] > matriz[i][1]) && (contador7 < 200)) {
-
-         contador7++;
-         //console.log(" ENTROU o tamanho candle é mairo que 3.3 ");
-         //aletaoriio = pequenoValorAleatorio();
-         matriz[i][3] = pequenoValorAleatorio();
+      //    matriz[i][2] = pequenoValorAleatorio();
 
 
 
-      }
+      // }
+      // while ((matriz[i][3] < matriz[i][0]) && (matriz[i][3] > matriz[i][1]) && (contador7 < 200)) {
+
+      //    contador7++;
+      //    //console.log(" ENTROU o tamanho candle é mairo que 3.3 ");
+      //    //aletaoriio = pequenoValorAleatorio();
+      //    matriz[i][3] = pequenoValorAleatorio();
+
+
+
+      // }
 
 
 
