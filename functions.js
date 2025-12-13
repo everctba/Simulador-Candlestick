@@ -31,7 +31,7 @@ function atualizaViesCompra(viesAtual) {
    let valorAleatorio = 0;
    valorAleatorio = Math.random().toFixed(2);
 
-   if (valorAleatorio <= 0.3) {
+   if (valorAleatorio <= 0.8) {
       viesAtual = "compra";
    } else {
       viesAtual = "venda";
@@ -46,7 +46,7 @@ function atualizaViesVenda(viesAtual) {
    let valorAleatorio = 0;
    valorAleatorio = Math.random().toFixed(2);
 
-   if (valorAleatorio <= 0.3) {
+   if (valorAleatorio <= 0.8) {
       viesAtual = "venda";
    } else {
       viesAtual = "compra";
