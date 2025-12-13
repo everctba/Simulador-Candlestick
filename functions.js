@@ -3,8 +3,7 @@
 function defineLadoDoViesInicial(vies) {
    let valorAleatorio = 0;
    valorAleatorio = Math.random().toFixed(2);
-   console.log("valorAleatorio = " + valorAleatorio);
-   console.log(" TIPO valorAleatorio = " + typeof Number(valorAleatorio));
+
 
    if (valorAleatorio >= 0.5) {
       vies = "compra";
@@ -15,19 +14,19 @@ function defineLadoDoViesInicial(vies) {
 }
 
 function atualizaVies(viesAtual) {
-   console.log(" ENTROU NOA TUALIZA VIES vies!!");
+
    if (vies === "compra") {
       vies = atualizaViesCompra(vies);
-      console.log("Vies recebido do atualiza vies de COMPRA vies = " + vies);
+
    } else {
       vies = atualizaViesVenda(vies);
-      console.log("Vies recebido do atualiza vies de VENDA vies = " + vies);
+
    }
 
 }
 
 function atualizaViesCompra(viesAtual) {
-   console.log("Ta no vies de COMPRA e é viesAtual!! ... " + viesAtual);
+
    let valorAleatorio = 0;
    valorAleatorio = Math.random().toFixed(2);
 
@@ -36,13 +35,13 @@ function atualizaViesCompra(viesAtual) {
    } else {
       viesAtual = "venda";
    }
-   //console.log("Valor do vies de compra Atualizado com 70% de chance = " + viesAtual);
+
 
    return viesAtual;
 }
 
 function atualizaViesVenda(viesAtual) {
-   console.log("Tá no vies de VENDA e é viesAtual!! ... " + viesAtual);
+
    let valorAleatorio = 0;
    valorAleatorio = Math.random().toFixed(2);
 
@@ -51,7 +50,7 @@ function atualizaViesVenda(viesAtual) {
    } else {
       viesAtual = "compra";
    }
-   //console.log("Valor do vies de compra Atualizado com 70% de chance = " + viesAtual);
+
 
    return viesAtual;
 }
@@ -62,7 +61,7 @@ function pequenoValorAleatorio() {
    valorAleatorio += 0.5;
    valorAleatorio += 25;
    Number(valorAleatorio.toFixed(2));
-   //console.log(" valor pequeno aleatorio = " + valorAleatorio);
+
 
    return valorAleatorio.toFixed(2);
 }
@@ -71,10 +70,10 @@ function geraValorAleatorio() {
    let valorAleatorio = 0;
 
    valorAleatorio = (Math.random() * 200);
-   //console.log(valorAleatorio);
+
    preco = (valorAleatorio / 10) + 26;
    preco = preco.toFixed(1);
-   //console.log(preco);
+
    let contador3 = 0;
    while ((preco < 26.1) && (preco > 40) && (contador3 < 100)) {
       contador3++;
@@ -96,16 +95,9 @@ function geraCandleAleatorio(tamanho, matriz) {
          } else {
             //matriz[i][j] = geraValorAleatorio();
             valor = pequenoValorAleatorio();
-            // console.log("VALOR ===== [j] " + valor);
 
             matriz[i][j] = valor;
 
-            // if (vies == "compra") {
-            //    matriz[i][j] = valor;
-            // } else if (vies == "venda") {
-            //    matriz[i][j] = valor;
-            //    //console.log("VIES DENTRO DO [j] " + vies);
-            // }
          }
       }
       let contador1 = 0;
@@ -113,13 +105,13 @@ function geraCandleAleatorio(tamanho, matriz) {
       //garante que a minima seja menor
       while (matriz[i][2] > matriz[i][0] && matriz[i][2] > matriz[i][1] && contador1 < 100) {
          matriz[i][2] = pequenoValorAleatorio();
-         console.log("atualizando viez a cada [i] " + i);
+
          contador1++;
       }
       while (matriz[i][3] < matriz[i][0] && matriz[i][3] < matriz[i][1] && contador2 < 100) {
          contador2++;
          matriz[i][3] = pequenoValorAleatorio();
-         console.log("atualizando viez a cada [i] " + i);
+
 
       }
       // console.log(" Vies dentro do [i] " + vies);
@@ -168,9 +160,9 @@ function geraCandleAleatorio(tamanho, matriz) {
 
       tamanhoCandle = Math.abs(matriz[i][0] - matriz[i][1]);
       tamanhoPavio = Math.abs(matriz[i][2] - matriz[i][3]);
-      console.log(" AAAAAAAAAA abertura menos fechamento COMPRA =  " + tamanhoCandle);
+
       //console.log(" abertura    matriz[i][0] =  " + matriz[i][0]);
-      console.log(" fechamento  matriz[i][0] =  " + matriz[i][0]);
+
       // cents = (tamanhoCandle % 5) / 4;
       //console.log(" cents = " + cents);
       let contador4 = 0;
@@ -179,19 +171,19 @@ function geraCandleAleatorio(tamanho, matriz) {
       let contador7 = 0;
       while (tamanhoCandle > 1.3 && contador4 < 200) {
          contador4++;
-         console.log(" ENTROU o tamanho candle é mairo que 3.3 ");
+
          matriz[i][1] = pequenoValorAleatorio();
-         console.log(" ATUALIZADA  BBBBBB matriz[i][1] =  " + matriz[i][1]);
+
          tamanhoCandle = Math.abs(matriz[i][0] - matriz[i][1]);
-         console.log(" BBBBBBBBBB abertura menos fechamento VENDA =  " + tamanhoCandle);
+
       }
       while ((tamanhoPavio > 1.3) && (contador5 < 200)) {
          contador5++;
-         console.log(" ENTROU o tamanho candle é mairo que 3.3 ");
+
          matriz[i][2] = pequenoValorAleatorio();
-         console.log(" ATUALIZADA PAVIUUUUUUUUUUUUUUUUU matriz[i][1] =  " + matriz[i][2]);
+
          tamanhoPavio = Math.abs(matriz[i][2] - matriz[i][3]);
-         console.log(" BBBBBBBBBB abertura menos fechamento VENDA =  " + tamanhoCandle);
+
       }
       while ((matriz[i][2] > matriz[i][0]) && (matriz[i][2] > matriz[i][1]) && (contador6 < 200)) {
 
@@ -200,7 +192,7 @@ function geraCandleAleatorio(tamanho, matriz) {
 
          matriz[i][2] = pequenoValorAleatorio();
 
-         console.log(" ATUALIZADA PAVIUUUUUUUUUUUUUUUUU matriz[i][3] =  " + matriz[i][2]);
+
 
       }
       while ((matriz[i][3] < matriz[i][0]) && (matriz[i][3] > matriz[i][1]) && (contador7 < 200)) {
@@ -290,11 +282,10 @@ function geraCandleAleatorio(tamanho, matriz) {
 
 
       atualizaVies(vies);
-      console.log("atualizando viez a cada [i] " + i);
+
 
    }
-   console.log("Linhas:", matriz.length);
-   console.log("Colunas:", matriz[0].length);
+
    return matriz;
 }
 
@@ -468,17 +459,3 @@ function printaVolatilidadePorCandle(matriz, tamanho) {
 
 }
 
-// function frequenciaDeVolatilidade(matriz, tamanho) {
-//    let i;
-
-
-
-//    for (i = 0; i < tamanho; i++) {
-//       matriz[i] =
-
-
-
-
-// }
-
-// }
