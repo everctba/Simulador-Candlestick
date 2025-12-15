@@ -75,7 +75,7 @@
 
          vies = defineLadoDoViesInicial(vies);
 
-        
+
          //precoRandomico = geraValorAleatorio();
          candles = geraCandleAleatorio(tamanho, candles);
 
@@ -114,8 +114,8 @@
          const espacamento = largura / (dados.length + 1);
 
          // Escala simples (ajusta valores ao tamanho do gráfico)
-         const max = Math.max(...dados.map(d => d.high));
-         const min = Math.min(...dados.map(d => d.low));
+         const max = Math.max(...dados.map(d => d.high + 1));
+         const min = Math.min(...dados.map(d => d.low + -1));
          const escalaY = valor => altura - ((valor - min) / (max - min)) * (altura - 20);
 
          dados.forEach((candle, i) => {

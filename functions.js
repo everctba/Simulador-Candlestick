@@ -57,7 +57,7 @@ function atualizaViesVenda(viesAtual) {
 //
 function pequenoValorAleatorio() {
    let valorAleatorio = 0;
-   valorAleatorio = (Math.random() * 3);
+   valorAleatorio = (Math.random() * 1);
    valorAleatorio += 0.5;
    valorAleatorio += 25;
    Number(valorAleatorio.toFixed(2));
@@ -66,23 +66,23 @@ function pequenoValorAleatorio() {
    return valorAleatorio.toFixed(2);
 }
 
-function geraValorAleatorio() {
-   let valorAleatorio = 0;
+// function geraValorAleatorio() {
+//    let valorAleatorio = 0;
 
-   valorAleatorio = (Math.random() * 200);
+//    valorAleatorio = (Math.random() * 200);
 
-   preco = (valorAleatorio / 10) + 26;
-   preco = preco.toFixed(1);
+//    preco = (valorAleatorio / 10) + 26;
+//    preco = preco.toFixed(1);
 
-   let contador3 = 0;
-   while ((preco < 26.1) && (preco > 40) && (contador3 < 100)) {
-      contador3++;
-      preco = pequenoValorAleatorio();
-   }
+//    let contador3 = 0;
+//    while ((preco < 26.1) && (preco > 40) && (contador3 < 100)) {
+//       contador3++;
+//       preco = pequenoValorAleatorio();
+//    }
+//    console.log(" Valor aleatorio gerado " + preco);
+//    return preco;
 
-   return preco;
-
-}
+// }
 
 function geraCandleAleatorio(tamanho, matriz) {
    let i, j;
@@ -95,6 +95,12 @@ function geraCandleAleatorio(tamanho, matriz) {
          } else {
             //matriz[i][j] = geraValorAleatorio();
             valor = pequenoValorAleatorio();
+            if (vies == "compra") {
+               valor = 35 + (Math.random() * 9);
+            } else {
+               valor = 35 - (Math.random() * 9);
+            }
+            valor = 39 + (Math.random() * 9);
 
             matriz[i][j] = valor;
 
@@ -109,14 +115,18 @@ function geraCandleAleatorio(tamanho, matriz) {
       let contador1 = 0;
       let contador2 = 0;
       let direcao = matriz[i][0] - matriz[i][1];
-      console.log(" Direção do candle  " + direcao);
+      //console.log(" Direção do candle  " + direcao);
+
       if (direcao < 0) {
-         console.log(" Entro candle direcao COMPRA " + direcao);
-         matriz[i][3] = matriz[i][1];
+         console.log(" ENTROU PIOR QUE A MINIMA ERA MAIOR QUE A ABERTURA " + direcao);
+         //só se a mínima for maior que a abertura
+
+         matriz[i][2] = matriz[i][0];
+
 
       } else {
          console.log(" Entro candle direcao VENDA " + direcao);
-         matriz[i][2] = matriz[i][0];
+         matriz[i][3] = matriz[i][0];
 
       }
 
@@ -124,17 +134,17 @@ function geraCandleAleatorio(tamanho, matriz) {
 
       contador2 = 0;
       //garante que a minima seja menor
-      while (matriz[i][2] > matriz[i][0] && matriz[i][2] < matriz[i][1] && contador1 < 100) {
-         matriz[i][2] = pequenoValorAleatorio();
+      // while (matriz[i][2] > matriz[i][0] && matriz[i][2] < matriz[i][1] && contador1 < 100) {
+      //    matriz[i][2] = pequenoValorAleatorio();
 
-         contador1++;
-      }
-      while (matriz[i][3] < matriz[i][0] && matriz[i][3] < matriz[i][1] && contador2 < 100) {
-         contador2++;
-         matriz[i][3] = pequenoValorAleatorio();
+      //    contador1++;
+      // }
+      // while (matriz[i][3] < matriz[i][0] && matriz[i][3] < matriz[i][1] && contador2 < 100) {
+      //    contador2++;
+      //    matriz[i][3] = pequenoValorAleatorio();
 
 
-      }
+      // }
       // console.log(" Vies dentro do [i] " + vies);
       // if ((vies == "compra") && (i > 0)) {
 
