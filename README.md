@@ -1,3 +1,3 @@
 Projeto da Faculdade UTFPR Toledo
 
-[img-demo.jpg](img-demo.jpg)
+![Screenshot](img-demo.jpg)
